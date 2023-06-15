@@ -1,0 +1,61 @@
+﻿<Page x:Class="Typo.View.Sidebar.StudentSidebarView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:SidebarViewModel="clr-namespace:Typo.ViewModel.Sidebar"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="125"
+      Background="#FF3E4369"
+      Title="StudentSidebarView">
+
+    <Page.DataContext>
+        <SidebarViewModel:StudentSidebarViewModel />
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="1" Fill="#444760" />
+        <Image x:Name="Image_Logo" Grid.Row="0" Grid.ColumnSpan="1" OpacityMask="#FF3E4369" Source="/Assets/Images/typoLogo.png" />
+        <Label x:Name="Label_UserType" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Content="Student" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF3E4369" Foreground="White" />
+        <Border x:Name="Border_UserInfo" BorderBrush="#FF585E90" BorderThickness="1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center" Width="114" Background="#FF3E4369" >
+            <Label Name="Label_Name" Content="{Binding StudentName}" Margin="-1,-1,-1,-1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        </Border>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="3" StrokeDashArray="1 2" />
+        <Button x:Name="Button_Home" Content="Home" Background="{Binding HomeButtonBackground}" Command="{Binding NavigateToHomeCommand}" Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="#FF585E90" Foreground="White" Cursor="Hand" ></Button>
+        <Button x:Name="Button_Exercises" Content="Oefeningen" Background="{Binding ExercisesButtonBackground}" Command="{Binding NavigateToExercisesCommand}" Grid.Row="3" Grid.ColumnSpan="3" BorderBrush="#FF585E90" Foreground="White"  Cursor="Hand" />
+        <Button x:Name="Button_Statistics" Content="Statistieken" Background="{Binding StatisticsButtonBackground}" Command="{Binding NavigateToStatisticsCommand}" Grid.Row="4" Grid.ColumnSpan="3"  BorderBrush="#FF585E90" Foreground="White" Cursor="Hand" />
+        <Button x:Name="Button_Milestones" Content="Milestones" Background="{Binding MilestonesButtonBackground}" Command="{Binding NavigateToMilestonesCommand}"  Grid.Row="5" Grid.ColumnSpan="3" BorderBrush="#FF585E90" Foreground="White" Cursor="Hand"/>
+        <Button x:Name="Button_Settings" Command="{Binding SettingsCommand}"  Grid.Row="8" Content="" Margin="41,8,1,0" BorderBrush="#FF3E4369" Padding="0,0,0,0" RenderTransformOrigin="0.5,0.5" Foreground="{x:Null}" Grid.Column="1" Cursor="Hand" Grid.ColumnSpan="2">
+            <Button.Background>
+                <ImageBrush ImageSource="/Assets/Images/settings.png" />
+            </Button.Background>
+        </Button>
+        <Button x:Name="Button_Help" Command="{Binding ShowHelpCommand}" Visibility="{Binding HelpVisibility}" Grid.Row="8" Content="" Margin="1,8,0,0" BorderBrush="#FF3E4369" Padding="0,0,0,0" RenderTransformOrigin="0.5,0.5" Foreground="{x:Null}" Grid.Column="1" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="/Assets/Images/help.png" />
+            </Button.Background>
+        </Button>
+        <Button x:Name="Button_Exit" Command="{Binding LogoutExitCommand}" Grid.Row="8" Content="" BorderBrush="#FF3E4369" Foreground="{x:Null}" Margin="0,8,0,0" BorderThickness="1,1,1,1" Width="40" HorizontalAlignment="Center" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="/Assets/Images/power-switch.png" />
+            </Button.Background>
+        </Button>
+    </Grid>
+</Page>

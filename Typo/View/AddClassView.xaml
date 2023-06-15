@@ -1,0 +1,41 @@
+﻿<Window x:Name="window" x:Class="Typo.View.AddClassView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:Typo.ViewModel"
+        mc:Ignorable="d"
+        Title="AddClassView" Height="450" Width="800" Background="#FF444760" WindowStyle="None" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <ViewModel:AddClassViewModel  />
+    </Window.DataContext>
+
+    <Grid HorizontalAlignment="Left" Width="800" Height="450" VerticalAlignment="Center" Background="#FF444760">
+        <Frame Content="{Binding Sidebar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="DimGray" Margin="0,0,680,0" />
+
+        <Rectangle x:Name="Rectangle_TopBar" HorizontalAlignment="Left" Height="47" Margin="120,0,0,0" Stroke="#FF585E90" VerticalAlignment="Top" Width="680"/>
+        <Label x:Name="Label_AddAccount" Content="Nieuwe klas aanmaken" HorizontalAlignment="Left" Margin="352,5,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+        <Rectangle x:Name="Rectangle_TopBar_Copy" HorizontalAlignment="Left" Height="1.3" Margin="155,93,0,0" Stroke="#FF585E90" VerticalAlignment="Top" Width="606" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Label x:Name="Label_Name" Content="Naam" HorizontalAlignment="Left" Margin="162,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.036,5.239" Foreground="White"/>
+        <TextBox x:Name="TextBox_Name" Text="{Binding Name, Mode=OneWayToSource}"  HorizontalAlignment="Left" Margin="321,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="26"/>
+        <Button x:Name="Button_CreateClass" Command="{Binding CreateClassCommand}" Content="Maak aan" HorizontalAlignment="Left" Margin="657,58,0,0" VerticalAlignment="Top" Height="26" Width="95" Background="#FF585E90" BorderBrush="White" Foreground="White" RenderTransformOrigin="0.309,-0.551"/>
+        <Label x:Name="Label_Teacher" Content="Docenten" HorizontalAlignment="Left" Margin="168,107,0,0" VerticalAlignment="Top" Foreground="White"/>
+
+        <ListView x:Name="ListView_Teachers" ItemsSource="{Binding TeacherList}" SelectedItem="{Binding SelectedTeacher, Mode=OneWayToSource}" Margin="168,143,52,37" Foreground="White" Background="#FF585E90" SelectionMode="Single" DisplayMemberPath="Username" />
+
+        <Button x:Name="Button_Back" Command="{Binding BackCommand}" Content="Terug" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Top" Height="47" Width="52" BorderBrush="#FF585E90" Background="#FF585E90" Foreground="White"/>
+        <Label x:Name="Label_Error_Msg" Content="{Binding ErrorMessage}" HorizontalAlignment="Left" Margin="383,413,0,0" VerticalAlignment="Top" Width="249" Foreground="Red" HorizontalContentAlignment="Center" RenderTransformOrigin="0.876,1.425"/>
+        <Button x:Name="Button_OrderbyTeacher" Command="{Binding TeacherSortCommand}" Content="Sorteren" HorizontalAlignment="Left" Margin="653,107,0,0" VerticalAlignment="Top" Height="26" Width="95" Background="#FF585E90" BorderBrush="White" Foreground="White" RenderTransformOrigin="0.309,-0.551"/>
+    </Grid>
+</Window>

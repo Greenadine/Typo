@@ -1,0 +1,45 @@
+﻿<Window x:Class="Typo.View.TextExerciseResultsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Typo.View" xmlns:diffplex="clr-namespace:DiffPlex.Wpf.Controls;assembly=DiffPlex.Wpf" xmlns:ViewModel="clr-namespace:Typo.ViewModel"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="TextExerciseResultsView" Height="450" Width="800" WindowStyle="None">
+    <Window.DataContext>
+        <ViewModel:TextExerciseResultsViewModel />
+    </Window.DataContext>
+    <Grid Background="#FF444760">
+        <Label x:Name="Label_ExericiseName" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="780" Foreground="#FFD4AF00" FontSize="25" FontWeight="Bold" RenderTransformOrigin="3.817,-1.026" Height="50"/>
+        <Border BorderBrush="#FFD4AF00" BorderThickness="1"  HorizontalAlignment="Center" Height="1" Margin="0,48,0,0" VerticalAlignment="Top" Width="780" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Border.RenderTransform>
+        </Border>
+        <Label Content="Goed" HorizontalAlignment="Left" Margin="498,260,0,0" VerticalAlignment="Top" FontSize="16" Foreground="Lime" FontWeight="Bold" />
+        <Label x:Name="Label_AmountCorrect" Content="{Binding Result.AmountCorrect}" HorizontalAlignment="Left" Margin="480,291,0,0" VerticalAlignment="Top" FontSize="20" Foreground="Lime" Width="84" Height="64" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Border BorderBrush="Lime" BorderThickness="1" HorizontalAlignment="Left" Width="84" Height="66" Margin="480,289,0,0" VerticalAlignment="Top"  />
+        <Label Content="% goed" HorizontalAlignment="Left" Margin="490,159,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FFD4AF00" FontWeight="Bold" />
+        <Label x:Name="Label_PercentageCorrect" Content="{Binding PercentageCorrect}" HorizontalAlignment="Left" Margin="481,0,0,0" VerticalAlignment="Center" FontSize="20" Foreground="#FFD4AF00" Width="84" Height="64" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Border BorderBrush="#FFD4AF00" BorderThickness="1" HorizontalAlignment="Left" Width="84" Height="66" Margin="481,0,0,0" VerticalAlignment="Center"  />
+        <Label Content="Score" HorizontalAlignment="Left" Margin="591,80,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FFD4AF00" FontWeight="Bold" />
+        <Label x:Name="Label_Score" Content="{Binding Result.Score}" HorizontalAlignment="Left" Margin="575,111,0,0" VerticalAlignment="Top" FontSize="20" Foreground="#FFD4AF00" Width="84" Height="64" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Border BorderBrush="#FFD4AF00" BorderThickness="1" HorizontalAlignment="Left" Width="84" Height="66" Margin="575,109,0,0" VerticalAlignment="Top"  />
+        <Label Content="Tijd" HorizontalAlignment="Left" Margin="688,159,0,0" VerticalAlignment="Top" FontSize="16" Foreground="#FFD4AF00" FontWeight="Bold" />
+        <Label x:Name="Label_Time" Content="{Binding TimeSpent}" HorizontalAlignment="Left" Margin="665,0,0,0" VerticalAlignment="Center" FontSize="20" Foreground="#FFD4AF00" Width="84" Height="64" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Border BorderBrush="#FFD4AF00" BorderThickness="1" HorizontalAlignment="Left" Width="84" Height="66" Margin="665,0,0,0" VerticalAlignment="Center"  />
+        <Label Content="Fouten" HorizontalAlignment="Left" Margin="676,260,0,0" VerticalAlignment="Top" FontSize="16" Foreground="Red" FontWeight="Bold" />
+        <Label x:Name="Label_AmountWrong" Content="{Binding Result.AmountWrong}" HorizontalAlignment="Left" Margin="665,291,0,0" VerticalAlignment="Top" FontSize="20" Foreground="Red" Width="84" Height="64" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Border BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Left" Width="84" Height="66" Margin="665,289,0,0" VerticalAlignment="Top"  />
+        <Button x:Name="Button_Menu" Command="{Binding BackCommand}" Content="Terug naar menu" HorizontalAlignment="Left" Margin="10,400,0,0" Width="166" FontSize="20"  Height="33" VerticalAlignment="Top" Background="#FF585E90" Foreground="White"/>
+        <Button x:Name="Button_TryAgain" Command="{Binding AgainCommand}" Content="Probeer opnieuw" HorizontalAlignment="Left" Margin="624,400,0,0" Width="166" FontSize="20"  Height="33" VerticalAlignment="Top" Background="#FF585E90" Foreground="White"/>
+        <diffplex:InlineDiffViewer x:Name="DiffView" Margin="10,75,400,76" Background="#FF5B5EAE" InsertedBackground="#7FFFB800" Foreground="White" DiffModel="{Binding DiffModel}" LineNumberWidth="0" UnchangedForeground="Lime" DeletedBackground="#7FFF0000"/>
+    </Grid>
+</Window>

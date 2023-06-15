@@ -1,0 +1,50 @@
+﻿<Window x:Class="Typo.View.StudentExercisesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:Typo.ViewModel"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="StudentExercisesView" Height="450" Width="800" Background="#FF444760" WindowStyle="None">
+    <Window.DataContext>
+        <ViewModel:StudentExercisesViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="109*" />
+            <ColumnDefinition Width="51*" />
+        </Grid.ColumnDefinitions>
+        <Frame Content="{Binding Sidebar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="DimGray" Margin="0,0,425,0" />
+        <ListView x:Name="ListView_Opdrachten" Margin="162,44,45,45"  ItemsSource="{Binding Exercises}" SelectedItem="{Binding SelectedExercise, Mode=OneWayToSource}" Foreground="White" Background="#FF585E90" DisplayMemberPath="Name"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="303" Margin="0,44,0,0" VerticalAlignment="Top" Width="220">
+            <Grid Background="#FF3E4369" Margin="0,0,0,-1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32*" />
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="45*" />
+                </Grid.RowDefinitions>
+
+                <Border BorderBrush="Black" BorderThickness="1,1,1,2" Margin="0,0,0,27">
+                    <Label x:Name="Label_Oefening_Naam" Content="{Binding SelectedExercise.Name}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0,0,0,0" Foreground="White" Background="#FFD4AF00" FontSize="16" Margin="0,0,0,-29" />
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Margin="0,1,0,81" Grid.Row="1" Grid.RowSpan="2">
+                    <Label x:Name="Label_Moeilijkheid" Content="{Binding SelectedDifficulty}" Margin="0,-1,0,-1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="2" Margin="0,1,0,0">
+                    <Label x:Name="Label_Modus" Content="{Binding SelectedMode}" Margin="1,-1,-1,-1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" />
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1,1,1,2" Grid.Row="3">
+                    <Label x:Name="Label_Word_Count" Content="{Binding SelectedExerciseLength}" Margin="-1,1,-1,-1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" />
+                </Border>
+                <Label x:Name="MoeilijkheidLegenda" Content="Moeilijkheid:" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Foreground="White" Margin="0,1,0,0"/>
+                <Label x:Name="ModusLegenda" Content="Modus:" HorizontalAlignment="Center" Margin="0,6,0,0" Grid.Row="2" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="WoordenLegenda" Content="Lengte:" HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="3" VerticalAlignment="Top" Foreground="White"/>
+            </Grid>
+        </Border>
+        <Button x:Name="Button_Play" Content="{Binding PlayButtonContent, Mode=TwoWay}" Command="{Binding PlayCommand}" HorizontalAlignment="Left" Margin="0,359,0,10" Width="220" Background="#FFD4AF00" Foreground="White" Grid.Column="1"  />
+        <Label Name="Excercise_Error_Msg" Content="" HorizontalAlignment="Left" Height="37" Margin="500,359,0,0" VerticalAlignment="Top" Width="130" Grid.ColumnSpan="2" Foreground="Red" />
+    </Grid>
+</Window>

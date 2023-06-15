@@ -1,0 +1,23 @@
+﻿<Window x:Class="Typo.View.AdminHomeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:Typo.ViewModel"
+        mc:Ignorable="d"
+        Title="AdminHomeView" Height="450" Width="800" Background="#FF444760" WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    
+    <Window.DataContext>
+        <ViewModel:AdminHomeViewModel />
+    </Window.DataContext>
+    
+    <Grid>
+        <Frame Content="{Binding Sidebar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="DimGray" Margin="0,0,680,0" />
+        
+        <Button x:Name="Button_AddAccount" Command="{Binding AddAccountCommand}" Content="Aanmaken account" HorizontalAlignment="Left" Margin="260,149,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.492,0.002" Height="28" Width="140" FontSize="15" BorderBrush="White" Background="#FF585E90" Foreground="White" />
+        <Button x:Name="Button_AddClass" Command="{Binding AddClassCommand}" Content="Aanmaken klas" HorizontalAlignment="Left" Margin="508,149,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.5,0.5" Height="28" Width="140" FontSize="15" BorderBrush="White" Background="#FF585E90" Foreground="White" />
+        <Button x:Name="Button_LinkStudent" Command="{Binding LinkStudentToClassCommand}" Content="Leerling koppelen" HorizontalAlignment="Left" Margin="260,253,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.56,0.523" Height="28" Width="140" FontSize="15" BorderBrush="White" Background="#FF585E90" Foreground="White" />
+        <Button x:Name="Button_LinkTeacher" Command="{Binding LinkTeacherToClassCommand}" Content="Docent koppelen" HorizontalAlignment="Left" Margin="508,253,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.56,0.523" Height="28" Width="140" FontSize="15" BorderBrush="White" Background="#FF585E90" Foreground="White" />
+    </Grid>
+</Window>

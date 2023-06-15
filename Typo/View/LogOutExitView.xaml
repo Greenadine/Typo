@@ -1,0 +1,24 @@
+﻿<Window x:Class="Typo.View.LogoutExitView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:Typo.ViewModel"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF3A3E5F"
+        BorderBrush="#FF303448"
+        BorderThickness="3"
+        Title="Typo" Height="200" Width="300">
+    <Window.DataContext>
+        <ViewModel:LogoutExitViewModel  />
+    </Window.DataContext>
+    <Grid>
+        <Label Content="Weet je het zeker?" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Foreground="White" Height="39" Width="278" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        <Button x:Name="Button_Exit" Content="Afsluiten" Command="{Binding ExitCommand}" HorizontalAlignment="Center" Margin="0,69,0,0" VerticalAlignment="Top" Height="29" Width="76" BorderBrush="White" Foreground="White" FontSize="15" Background="#FF585E90"/>
+        <Button x:Name="Button_Logout" Content="Uitloggen" Command="{Binding LogoutCommand}" HorizontalAlignment="Center" Margin="0,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.56,0.523" Height="29" Width="76" FontSize="15" BorderBrush="White" Background="#FF585E90" Foreground="White" />
+        <Button x:Name="Button_Cancel" Content="Annuleren" Command="{Binding CancelCommand}" HorizontalAlignment="Center" Margin="0,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.56,0.523" Height="29" Width="76" FontSize="15" BorderBrush="White" Background="#FF585E90" Foreground="White" />
+    </Grid>
+</Window>

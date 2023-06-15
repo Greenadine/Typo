@@ -1,0 +1,39 @@
+﻿<Window x:Class="Typo.View.AddAccountView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:Typo.ViewModel"
+        mc:Ignorable="d"
+        Title="AddAccountView" Height="450" Width="800" Background="#FF444760" WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <ViewModel:AddAccountViewModel  />
+    </Window.DataContext>
+
+    <Grid HorizontalAlignment="Left" Width="800" Height="450" VerticalAlignment="Center" Background="#FF444760">
+        <Frame Content="{Binding Sidebar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="DimGray" Margin="0,0,680,0" />
+
+        <Rectangle x:Name="Rectangle_TopBar" HorizontalAlignment="Left" Height="47" Margin="120,0,0,0" Stroke="#FF585E90" VerticalAlignment="Top" Width="680"/>
+        <Label x:Name="Label_AddAccount" Content="Nieuw account aanmaken" HorizontalAlignment="Left" Margin="319,3,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+        <Button x:Name="Button_Back" Command="{Binding ReturnCommand}" Content="Terug" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Top" Height="47" Width="52" BorderBrush="#FF585E90" Background="#FF585E90" Foreground="White"/>
+        <Label x:Name="Label_Name" Content="Naam" HorizontalAlignment="Left" Margin="140,91,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="Label_AccountType" Content="Accounttype" HorizontalAlignment="Left" Margin="140,159,0,0" VerticalAlignment="Top" Background="#FF444760" Foreground="White"/>
+        <ComboBox x:Name="ComboBox_AccountType" SelectedIndex="{Binding AccountType, Mode=OneWayToSource}" HorizontalAlignment="Left" Margin="368,159,0,0" VerticalAlignment="Top" Width="180" Foreground="Black" Height="26">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FF444760" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+            <ComboBoxItem>Leerling</ComboBoxItem>
+            <ComboBoxItem>Docent</ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="TextBox_Name" Text="{Binding Name, Mode=OneWayToSource}" HorizontalAlignment="Left" Margin="368,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="26"/>
+        <Button x:Name="Button_CreateAccount" Content="Maak aan" Command="{Binding AddAccountCommand}" HorizontalAlignment="Left" Margin="634,91,0,0" VerticalAlignment="Top" Height="26" Width="95" Background="#FF585E90" BorderBrush="White" Foreground="White"/>
+        <Label x:Name="Label_ErrorMsg" Content="{Binding ErrorMessage}" HorizontalAlignment="Left" Margin="634,122,0,0" VerticalAlignment="Top" Height="25" Width="156" Foreground="Red"/>
+    </Grid>
+
+
+</Window>

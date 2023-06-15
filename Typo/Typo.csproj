@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\Icons\typoLogo.ico</ApplicationIcon>
+    <StartupObject>Typo.App</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\achievement.gif" />
+    <None Remove="Assets\Images\arrow-left.png" />
+    <None Remove="Assets\Images\arrow-right.png" />
+    <None Remove="Assets\Images\help.png" />
+    <None Remove="Assets\Sounds\CorrectSoundTypo.wav" />
+    <None Remove="Assets\Sounds\WrongSoundTypo.wav" />
+    <None Remove="Assets\Images\bronze.png" />
+    <None Remove="Assets\Images\gold.png" />
+    <None Remove="Assets\Images\Silver.png" />
+    <None Remove="play.png" />
+    <None Remove="power-switch.png" />
+    <None Remove="settings.png" />
+    <None Remove="typoLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Images\play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\power-switch.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\typoLogo.ico" />
+    <Content Include="Assets\Images\typoLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DiffPlex" Version="1.7.1" />
+    <PackageReference Include="DiffPlex.Wpf" Version="1.3.2" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="SSH.NET" Version="2020.0.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\achievement.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\arrow-left.png" />
+    <Resource Include="Assets\Images\arrow-right.png" />
+    <Resource Include="Assets\Images\bronze.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\gold.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\help.png" />
+    <Resource Include="Assets\Images\Silver.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Assets\Sounds\CorrectSoundTypo.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Sounds\WrongSoundTypo.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

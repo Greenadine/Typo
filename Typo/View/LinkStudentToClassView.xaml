@@ -1,0 +1,44 @@
+﻿<Window x:Name="window" x:Class="Typo.View.LinkStudentToClassView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:Typo.ViewModel"
+        mc:Ignorable="d"
+        Title="LinkStudentToClassView" Height="450" Width="800" Background="#FF444760" WindowStyle="None" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <ViewModel:LinkStudentToClassViewModel  />
+    </Window.DataContext>
+
+    <Grid HorizontalAlignment="Left" Width="800" Height="450" VerticalAlignment="Center" Background="#FF444760">
+        <Frame Content="{Binding Sidebar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="DimGray" Margin="0,0,680,0" />
+
+        <Rectangle x:Name="Rectangle_TopBar" HorizontalAlignment="Left" Height="47" Margin="120,0,0,0" Stroke="#FF585E90" VerticalAlignment="Top" Width="680"/>
+        <Label x:Name="Label_AddAccount" Content="Leerling koppelen" HorizontalAlignment="Left" Margin="352,5,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
+        <Button x:Name="Button_LinkStudent" Command="{Binding LinkStudentCommand}" Content="Koppelen" HorizontalAlignment="Left" Margin="676,408,0,0" VerticalAlignment="Top" Height="26" Width="95" Background="#FF585E90" BorderBrush="White" Foreground="White" RenderTransformOrigin="0.309,-0.551"/>
+        <Label x:Name="Label_Students" Content="Leerlingen" HorizontalAlignment="Left" Margin="162,67,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="Label_Class" Content="Klassen" HorizontalAlignment="Left" Margin="505,67,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ListView x:Name="ListView_Student" Margin="162,103,422,16" Foreground="White" Background="#FF585E90" SelectionMode="Single" ItemsSource="{Binding StudentList}" SelectedItem="{Binding SelectedStudent, Mode=OneWayToSource}" DisplayMemberPath="Username">
+
+        </ListView>
+        <ListView x:Name="ListView_Class" Margin="505,103,79,77" Foreground="White" Background="#FF585E90" ItemsSource="{Binding ClassList}" SelectedItem="{Binding SelectedClass, Mode=TwoWay}" SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="Button_Back" Command="{Binding BackCommand}" Content="Terug" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Top" Height="47" Width="52" BorderBrush="#FF585E90" Background="#FF585E90" Foreground="White"/>
+        <Label x:Name="Label_Error_Msg" Content="{Binding ErrorMessage}" HorizontalAlignment="Left" Margin="481,408,0,0" VerticalAlignment="Top" Width="190" Foreground="Red"/>
+        <Button x:Name="Button_OrderbyStudent" Command="{Binding StudentSortCommand}" Content="Sorteren" HorizontalAlignment="Left" Margin="283,67,0,0" VerticalAlignment="Top" Height="26" Width="95" Background="#FF585E90" BorderBrush="White" Foreground="White" RenderTransformOrigin="0.309,-0.551"/>
+        <Button x:Name="Button_OrderbyClass" Command="{Binding ClassSortCommand}" Content="Sorteren" HorizontalAlignment="Left" Margin="626,67,0,0" VerticalAlignment="Top" Height="26" Width="95" Background="#FF585E90" BorderBrush="White" Foreground="White" RenderTransformOrigin="0.309,-0.551"/>
+
+    </Grid>
+
+
+</Window>
